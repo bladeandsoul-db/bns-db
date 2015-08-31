@@ -18,8 +18,6 @@
             </div>
         </div>
     </div>
-    <div class="container ads">
-    </div>
     <div class="section background-4">
         <div class="container sample">
             <h2>Sample Text </h2>
