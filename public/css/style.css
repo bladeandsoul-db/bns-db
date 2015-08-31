@@ -217,7 +217,7 @@ body
 }
 .background-4
 {
-    background-image: url('../img/background-4.jpg');
+    background-image: url('../img/background-4-compressed.jpg');
     -webkit-background-size: cover;
     background-size: cover;
 }
