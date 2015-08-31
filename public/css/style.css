@@ -7,51 +7,7 @@ body
     font-size: 1.5em;
     line-height: 1.6;
 }
-.section
-{
-    position: relative;
-    background: #ffffff;
-    padding: 14rem 0 10rem;
-}
 
-/* Welcome Section
-------------------------------------------- */
-.welcome
-{
-    text-align: center;
-    overflow: hidden;
-    color: #1E1E1C;
-}
-.welcome-message
-{
-    position: relative;
-    z-index:1;
-}
-.welcome-message > h1, h2, h3, h4
-{
-    margin:0;
-}
-.figure-1
-{
-    position: absolute;
-    right: -9rem;
-    top: -8rem;
-    max-height: 750px;
-    opacity: 0.4;
-    pointer-events: none;
-}
-.logo
-{
-    top: -1rem;
-    pointer-events: none;
-}
-
-
-.sample
-{
-    text-align: center;
-    color: #fff;
-}
 
 /* Navbar
 ------------------------------------------- */
@@ -187,6 +143,57 @@ body
 
 
 
+.section
+{
+    position: relative;
+    background: #ffffff;
+    padding: 14rem 0 10rem;
+}
+
+/* Welcome Section
+------------------------------------------- */
+.welcome
+{
+    text-align: center;
+    overflow: hidden;
+    color: #1E1E1C;
+}
+.welcome-message
+{
+    position: relative;
+    z-index:1;
+}
+.welcome-message > h1, h2, h3, h4
+{
+    margin:0;
+}
+.figure-1
+{
+    position: absolute;
+    right: -9rem;
+    top: -8rem;
+    max-height: 750px;
+    opacity: 0.4;
+    pointer-events: none;
+}
+.logo
+{
+    top: -1rem;
+    pointer-events: none;
+}
+
+
+.sample
+{
+    text-align: center;
+    color: #fff;
+}
+
+
+
+
+
+
 
 /* Background Images
 ------------------------------------------- */
@@ -214,8 +221,6 @@ body
     -webkit-background-size: cover;
     background-size: cover;
 }
-
-
 
 
 
