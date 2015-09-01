@@ -1,0 +1,36 @@
+{
+  "LB":{
+    "mistSlash": {
+      "Name":"Mist Slash",
+      "Nodes":
+      {
+        "Default":
+        {
+          "Resource":"Generates 1 Chi",
+          "Icon":"skill_assassin_mistSlash.png",
+          "Description": "Deals X~Y damage",
+          "Effects": [],
+          "Range":"3m",
+          "Area": "Target",
+          "Cast Time": "Instant",
+          "Cooldown": "Instant",
+          "Requirement": "Disruption stance"
+        },
+        "1-1":
+        {
+          "Resource":"Generates 1 Chi",
+          "Icon":"skill_assassin_mistSlash.png",
+          "Description": "Deals X~Y damage",
+          "Effects": {
+            "adds": "yolo"
+          },
+          "Range":"3m",
+          "Area": "Target",
+          "Cast Time": "Instant",
+          "Cooldown": "Instant",
+          "Requirement": "Disruption stance"
+        }
+      }
+    }
+  }
+}

@@ -13,4 +13,9 @@ class MainController extends Controller
     {
         return view("home");
     }
+
+    public function simulator()
+    {
+        return view("simulator");
+    }
 }

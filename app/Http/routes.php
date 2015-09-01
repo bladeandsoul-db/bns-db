@@ -13,3 +13,5 @@
 
 Route::get("home", "MainController@index");
 Route::get("/", "MainController@index");
+
+Route::get("/simulator", "MainController@simulator");

@@ -40,22 +40,23 @@
         <nav class="navbar">
             <div class="container">
                 <svg class="navbar-button">
+                    <circle class="circle" r="20" cx="50%" cy="50%" fill="#ff3300"></circle>
                     <line class="upper"  stroke="#bbb" stroke-width="2px" x1="22" x2="43" y1="25" y2="25"></line>
                     <line class="middle" stroke="#bbb" stroke-width="2px" x1="22" x2="43" y1="33" y2="33"></line>
                     <line class="lower"  stroke="#bbb" stroke-width="2px" x1="22" x2="43" y1="41" y2="41"></line>
+
                 </svg>
                 <ul class="navbar-list">
-                    <li class="navbar-item"><a class="navbar-link" href="{{ action('MainController@index') }}">Home</a></li>
+                    <li class="navbar-item {{ isActive(["/", "home"]) }}"><a class="navbar-link" href="{{ action('MainController@index') }}">Home</a></li>
                 </ul>
                 <div class="navbar-collapse">
                     <ul class="navbar-list">
-                        <li class="navbar-item"><a class="navbar-link" href="#Talent">Talent Calculator</a></li>
+                        <li class="navbar-item {{ isActive(["simulator"]) }}"><a class="navbar-link" href="{{ action('MainController@simulator') }}">Skill Tree</a></li>
                         <li class="navbar-item"><a class="navbar-link" href="#Database">Database</a></li>
                         <li class="navbar-item"><a class="navbar-link" href="#Forum">Forum</a></li>
                     </ul>
                     <ul class="navbar-list navbar-right">
-                        <li class="navbar-item"><a class="navbar-link" href="#Login">Login</a></li>
-                        <li class="navbar-item"><a class="navbar-link" href="#Register">Register</a></li>
+
                     </ul>
                 </div>
             </div>
@@ -74,6 +75,7 @@
 
         <script src="{{asset("/js/TweenMax.min.js")}}"></script>
         <script src="{{asset("/js/jquery.min.js")}}"></script>
+        <script src="{{asset("/js/particles.min.js")}}"></script>
         <script src="{{asset("/js/script.js")}}"></script>
         @yield("js")
     </body>

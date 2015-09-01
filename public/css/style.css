@@ -1,3 +1,8 @@
+@font-face
+{
+    src: url("../font/Direct%20du%20Gauche.ttf");
+    font-family: "Gauche";
+}
 body, label, h1, h2, h3, h4, h5, h6, a, span {
     font-family: "Roboto", Helvetica, Arial, sans-serif;
     font-weight: 300;
@@ -140,15 +145,22 @@ body
 }
 
 
-
-
+/* General
+------------------------------------------- */
 
 .section
 {
     position: relative;
     background: #ffffff;
-    padding: 14rem 0 10rem;
+    padding: 12rem 0;
 }
+
+.brushed
+{
+    font-family: Gauche;
+    text-transform: uppercase;
+}
+
 
 /* Welcome Section
 ------------------------------------------- */
@@ -171,7 +183,7 @@ body
 {
     position: absolute;
     right: -9rem;
-    top: -8rem;
+    top: -13rem;
     max-height: 750px;
     opacity: 0.4;
     pointer-events: none;
@@ -256,3 +268,107 @@ body
 
 /* Larger than Desktop HD */
 @media (min-width: 1200px) {}
+
+
+
+
+
+/* Mobile first queries */
+
+/* Larger than mobile */
+@media (min-width: 400px) {
+    section.navigation{ display:block; }
+    .collapse{ display:none; }
+
+    .xs-one.column,
+    .xs-one.columns                    { width: 4.66666666667%; }
+    .xs-two.columns                    { width: 13.3333333333%; }
+    .xs-three.columns                  { width: 22%;            }
+    .xs-four.columns                   { width: 30.6666666667%; }
+    .xs-five.columns                   { width: 39.3333333333%; }
+    .xs-six.columns                    { width: 48%;            }
+    .xs-seven.columns                  { width: 56.6666666667%; }
+    .xs-eight.columns                  { width: 65.3333333333%; }
+    .xs-nine.columns                   { width: 74.0%;          }
+    .xs-ten.columns                    { width: 82.6666666667%; }
+    .xs-eleven.columns                 { width: 91.3333333333%; }
+    .xs-twelve.columns                 { width: 100%; margin-left: 0; }
+
+}
+
+/* Larger than phablet */
+@media (min-width: 550px) {
+    section.navigation{ display:none; }
+    .collapse{ display:block; }
+
+    .sm-one.column,
+    .sm-one.columns                    { width: 4.66666666667%; }
+    .sm-two.columns                    { width: 13.3333333333%; }
+    .sm-three.columns                  { width: 22%;            }
+    .sm-four.columns                   { width: 30.6666666667%; }
+    .sm-five.columns                   { width: 39.3333333333%; }
+    .sm-six.columns                    { width: 48%;            }
+    .sm-seven.columns                  { width: 56.6666666667%; }
+    .sm-eight.columns                  { width: 65.3333333333%; }
+    .sm-nine.columns                   { width: 74.0%;          }
+    .sm-ten.columns                    { width: 82.6666666667%; }
+    .sm-eleven.columns                 { width: 91.3333333333%; }
+    .sm-twelve.columns                 { width: 100%; margin-left: 0; }
+
+}
+
+/* Larger than tablet */
+@media (min-width: 750px) {
+    .lg-one.column,
+    .lg-one.columns                    { width: 4.66666666667%; }
+    .lg-two.columns                    { width: 13.3333333333%; }
+    .lg-three.columns                  { width: 22%;            }
+    .lg-four.columns                   { width: 30.6666666667%; }
+    .lg-five.columns                   { width: 39.3333333333%; }
+    .lg-six.columns                    { width: 48%;            }
+    .lg-seven.columns                  { width: 56.6666666667%; }
+    .lg-eight.columns                  { width: 65.3333333333%; }
+    .lg-nine.columns                   { width: 74.0%;          }
+    .lg-ten.columns                    { width: 82.6666666667%; }
+    .lg-eleven.columns                 { width: 91.3333333333%; }
+    .lg-twelve.columns                 { width: 100%; margin-left: 0; }
+}
+
+/* Larger than desktop */
+@media (min-width: 1000px) {
+    .xl-one.column,
+    .xl-one.columns                    { width: 4.66666666667%; }
+    .xl-two.columns                    { width: 13.3333333333%; }
+    .xl-three.columns                  { width: 22%;            }
+    .xl-four.columns                   { width: 30.6666666667%; }
+    .xl-five.columns                   { width: 39.3333333333%; }
+    .xl-six.columns                    { width: 48%;            }
+    .xl-seven.columns                  { width: 56.6666666667%; }
+    .xl-eight.columns                  { width: 65.3333333333%; }
+    .xl-nine.columns                   { width: 74.0%;          }
+    .xl-ten.columns                    { width: 82.6666666667%; }
+    .xl-eleven.columns                 { width: 91.3333333333%; }
+    .xl-twelve.columns                 { width: 100%; margin-left: 0; }
+}
+
+/* Larger than Desktop HD */
+@media (min-width: 1200px) {
+    .xxl-one.column,
+    .xxl-one.columns                    { width: 4.66666666667%; }
+    .xxl-two.columns                    { width: 13.3333333333%; }
+    .xxl-three.columns                  { width: 22%;            }
+    .xxl-four.columns                   { width: 30.6666666667%; }
+    .xxl-five.columns                   { width: 39.3333333333%; }
+    .xxl-six.columns                    { width: 48%;            }
+    .xxl-seven.columns                  { width: 56.6666666667%; }
+    .xxl-eight.columns                  { width: 65.3333333333%; }
+    .xxl-nine.columns                   { width: 74.0%;          }
+    .xxl-ten.columns                    { width: 82.6666666667%; }
+    .xxl-eleven.columns                 { width: 91.3333333333%; }
+    .xxl-twelve.columns                 { width: 100%; margin-left: 0; }
+}
+
+
+/*.column,*/
+/*.columns {*/
+/*margin-left: 0 !important; }*/

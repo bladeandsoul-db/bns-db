@@ -1,0 +1,80 @@
+.simulator-section
+{
+    padding: 5rem 0;
+}
+.simulator-window
+{
+    background: white;
+    padding: 2rem;
+    border-top: 1px solid #ff3300;
+    border-bottom: 1px solid #ff3300;
+}
+
+.skill-list
+{
+    width: 50%;
+    max-height: 500px;
+    overflow:auto;
+    float:left;
+
+}
+.skill-list .list, .skill-list .list li
+{
+    margin:0;
+}
+.skill-list .list li
+{
+    height: 38px;
+    display:block;
+    border-bottom: 1px solid #ff3300;
+}
+.skill-list .list li.key
+{
+    font-weight: 400;
+    font-size: 2rem;
+    color:white;
+    height:38px;
+    line-height: 38px;
+    padding: 0 0 0 1rem;
+    background: #ff3300;
+}
+.skill-list .list li.skill
+{
+    cursor: pointer;
+}
+li.skill .thumb
+{
+    height: 38px;
+    width: 65px;
+    display:inline-block;
+    float:left;
+    overflow: hidden;
+
+
+}
+li.skill .name
+{
+    height: 38px;
+    font-size: 13px;
+    line-height: 38px;
+    margin-left: 70px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: clip;
+}
+.skill-tree
+{
+    width: 50%;
+    float:left;
+
+}
+
+.skill-description
+{
+}
+
+.skill-description .inner, .skill-tree .inner, .skill-list .inner
+{
+
+    padding: 1rem;
+}

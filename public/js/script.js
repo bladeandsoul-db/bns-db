@@ -9,7 +9,10 @@ $(document).ready(function(){
         navbarTimeline = new TimelineMax({paused:true});
     //Configure Timeline ( animation )
     navbarTimeline.set($(".navbar-collapsed"), {display:"block"})
-        .from($(".navbar-collapsed"), 0.3, {height: 0});
+        .set($(".navbar-button .circle"), {transformOrigin: "0% 0%"})
+        .from($(".navbar-button .circle"), 0.3, {attr:{r: 0}})
+        .to($(".navbar-button line"), 0.3, {stroke: "#fff"}, "=-0.3")
+        .from($(".navbar-collapsed"), 0.3, {height: 0}, "=-0.3");
 
     var navbarToggle = function(){
         if(navbarStatus == false)
@@ -35,11 +38,12 @@ $(document).ready(function(){
         }
     });
 
+    if($("#particles-js").length)
+    {
+        /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
+        particlesJS.load('particles-js', 'js/particles.json');
+    }
 
-    /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
-    particlesJS.load('particles-js', 'js/particles.json', function() {
-        console.log('callback - particles.js config loaded');
-    });
 
 
 });
