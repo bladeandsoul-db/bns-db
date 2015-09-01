@@ -20,12 +20,7 @@
     <div class="section background-3">
         <div class="container sample">
             <h1 class="brushed">Skill Tree Simulator</h1>
-            <h5>Our Skill Tree Simulator is currently in development.</h5>
-        </div>
-    </div>
-    <div class="section">
-        <div class="container">
-
+            <h5>My Skill Tree Simulator is currently in development.</h5>
         </div>
     </div>
 @stop
