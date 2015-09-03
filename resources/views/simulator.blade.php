@@ -66,7 +66,7 @@
                 </div>
                 <div class="skill-tree">
                     <div class="inner">
-                        <div class="skill-grid x2">
+                        <div class="skill-grid">
                             <div class="node x1 y1">
                                 <div class="icon"><img src="img/simulator/skill_assassin_mistSlash.png"></div>
                                 <div class="frame"></div>
