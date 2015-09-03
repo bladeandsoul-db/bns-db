@@ -11,7 +11,7 @@
                         <ul class="list">
                             <li class="key">LB</li>
 
-                            <li class="skill">
+                            <li class="skill" title="Mist Slash">
                                 <div class="thumb"><img src="img/simulator/skill_assassin_mistSlash.png"></div>
                                 <div class="name">Mist Slash</div>
                             </li>
