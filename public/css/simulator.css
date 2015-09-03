@@ -5,7 +5,7 @@
 .simulator-window
 {
     background: white;
-    padding: 2rem;
+    padding: 2rem 0;
     border-top: 1px solid #ff3300;
     border-bottom: 1px solid #ff3300;
     min-height: 500px;
@@ -13,11 +13,12 @@
 .skill-description .inner, .skill-tree .inner, .skill-list .inner
 {
     padding: 0 1rem;
+    position: relative;
 }
 .skill-list
 {
 
-    width: 100px;
+    width: 101px;
     float: left;
     max-height: 500px;
     overflow-y: auto;
@@ -25,7 +26,7 @@
 .skill-list .inner
 {
     width: 64px;
-    padding: 0 0 0 1rem;
+    /*padding: 0 0 0 1rem;*/
 }
 .skill-list .list, .skill-list .list li
 {
@@ -81,7 +82,7 @@ li.skill .name
 
 .skill-tree
 {
-    width: calc(100% - 100px);
+    width: calc(100% - 101px);
     float:left;
 }
 .skill-tree .inner
@@ -98,12 +99,15 @@ li.skill .name
     width: 230px;
     height: 485px;
 }
+.skill-grid.x1{margin-left:calc(50% - 32px)}
+.skill-grid.x2{margin-left:calc(50% - 64px)}
+.skill-grid.x3{margin-left: 0;}
+
 .skill-tree .node
 {
     position: absolute;
     width: 64px;
     height: 64px;
-    background: rgba(0,0,0,0.05);
 }
 .skill-tree .node.x1{left:0%}
 .skill-tree .node.x2{left:calc(50% - 32px)}
@@ -146,7 +150,76 @@ li.skill .name
 .skill-description
 {
 }
+.skill-description .name
+{
+    font-size: 2rem;
+    color: #6dc0cd;
+    display: block;
+    margin-bottom: 1.5rem;
 
+}
+.skill-description .right-box
+{
+    position: absolute;
+    right: 1rem;
+    top:0;
+}
+.skill-description .resource
+{
+    margin:0;
+    text-align: right;
+}
+.skill-description .point-cost
+{
+    margin:0;
+    text-align: right;
+    color: #75DC8A;
+}
+.skill-description .icon
+{
+    width: 64px;
+    height: 64px;
+    display: inline-block;
+    float: left;
+}
+
+.skill-description .info
+{
+    display: inline-block;
+    float: left;
+    width: calc(100% - 64px);
+    font-size: 1.8rem;
+    line-height: 2rem;
+}
+.skill-description .info-table
+{
+    font-size: 10px;
+    margin: auto;
+    display: table;
+}
+.skill-description .info-table li {
+    float: left;
+    display: inline-block;
+    width: 60px;
+    overflow: hidden;
+    word-spacing: 0;
+    letter-spacing: 0;
+    margin-left: 5px;
+}
+.skill-description .info-table div
+{
+    margin-bottom: 5px;
+    border-radius: 5px;
+    border: 1px solid #ff3300;
+    display: block;
+    text-align: center;
+}
+.skill-description .info-table li .head {
+    line-height: 20px;
+}
+.skill-description .info-table li .body {
+    line-height: 60px;
+}
 
 @media(min-width: 750px){
     .skill-list{

@@ -28,33 +28,84 @@
                                 <div class="thumb"><img src="img/simulator/skill_assassin_mistSlash.png"></div>
                                 <div class="name">Mist Slash</div>
                             </li>
+                            <li class="skill">
+                                <div class="thumb"><img src="img/simulator/skill_assassin_mistSlash.png"></div>
+                                <div class="name">Mist Slash</div>
+                            </li>
+                            <li class="skill">
+                                <div class="thumb"><img src="img/simulator/skill_assassin_mistSlash.png"></div>
+                                <div class="name">Mist Slash</div>
+                            </li>
+                            <li class="skill">
+                                <div class="thumb"><img src="img/simulator/skill_assassin_mistSlash.png"></div>
+                                <div class="name">Mist Slash</div>
+                            </li>
+                            <li class="skill">
+                                <div class="thumb"><img src="img/simulator/skill_assassin_mistSlash.png"></div>
+                                <div class="name">Mist Slash</div>
+                            </li>
+                            <li class="skill">
+                                <div class="thumb"><img src="img/simulator/skill_assassin_mistSlash.png"></div>
+                                <div class="name">Mist Slash</div>
+                            </li>
+                            <li class="skill">
+                                <div class="thumb"><img src="img/simulator/skill_assassin_mistSlash.png"></div>
+                                <div class="name">Mist Slash</div>
+                            </li>
+                            <li class="skill">
+                                <div class="thumb"><img src="img/simulator/skill_assassin_mistSlash.png"></div>
+                                <div class="name">Mist Slash</div>
+                            </li>
+                            <li class="skill">
+                                <div class="thumb"><img src="img/simulator/skill_assassin_mistSlash.png"></div>
+                                <div class="name">Mist Slash</div>
+                            </li>
 
                         </ul>
                     </div>
                 </div>
                 <div class="skill-tree">
                     <div class="inner">
-                        <div class="skill-grid">
+                        <div class="skill-grid x2">
                             <div class="node x1 y1">
                                 <div class="icon"><img src="img/simulator/skill_assassin_mistSlash.png"></div>
                                 <div class="frame"></div>
                             </div>
 
-                            <div class="node x2 y1">
+                            <div class="node x1 y2">
                                 <div class="icon"><img src="img/simulator/skill_assassin_mistSlash.png"></div>
                                 <div class="frame"></div>
                             </div>
 
-                            <div class="node x3 y1">
+                            <div class="node x1 y3">
                                 <div class="icon"><img src="img/simulator/skill_assassin_mistSlash.png"></div>
                                 <div class="frame"></div>
                             </div>
 
-                            <div class="node x2 y2"></div>
-                            <div class="node x2 y3"></div>
+                            <div class="node x2 y3">
+                                <div class="icon"><img src="img/simulator/skill_assassin_mistSlash.png"></div>
+                                <div class="frame"></div>
+                            </div>
 
-                            <div class="node x3 y4"></div>
-                            <div class="node x3 y5"></div>
+                            <div class="node x1 y4">
+                                <div class="icon"><img src="img/simulator/skill_assassin_mistSlash.png"></div>
+                                <div class="frame"></div>
+                            </div>
+
+                            <div class="node x2 y4">
+                                <div class="icon"><img src="img/simulator/skill_assassin_mistSlash.png"></div>
+                                <div class="frame"></div>
+                            </div>
+
+                            <div class="node x1 y5">
+                                <div class="icon"><img src="img/simulator/skill_assassin_mistSlash.png"></div>
+                                <div class="frame"></div>
+                            </div>
+
+                            <div class="node x2 y5">
+                                <div class="icon"><img src="img/simulator/skill_assassin_mistSlash.png"></div>
+                                <div class="frame"></div>
+                            </div>
 
                         </div>
                     </div>
@@ -63,7 +114,44 @@
             <div class="lg-five sm-twelve columns">
                 <div class="skill-description">
                     <div class="inner">
-                        SkillDesc
+                        <span class="name">Mist Slash</span>
+                        <div class="right-box">
+                            <p class="resource">Generates 1 Chi</p>
+                            <p class="point-cost"><img>2 Points</p>
+                        </div>
+                        <div class="icon">
+                            <img src="img/simulator/skill_assassin_mistSlash.png">
+                        </div>
+                        <div class="info">Deals X-Y Damage</div>
+                        <div class="u-cf"></div>
+                        <div class="sub-info">
+                            <ul>
+                                <li class="adds"></li>
+                                <li class="removes"></li>
+                                <li></li>
+                            </ul>
+                        </div>
+
+                        <div class="info-table">
+                            <ul>
+                                <li class="range">
+                                    <div class="head">Range</div>
+                                    <div class="body">3m</div>
+                                </li>
+                                <li class="area">
+                                    <div class="head">Area</div>
+                                    <div class="body">Target</div>
+                                </li>
+                                <li class="cast">
+                                    <div class="head">Cast Time</div>
+                                    <div class="body">Instant</div>
+                                </li>
+                                <li class="cooldown">
+                                    <div class="head">Cooldown</div>
+                                    <div class="body">Instant</div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
