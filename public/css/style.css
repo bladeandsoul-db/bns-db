@@ -3,10 +3,6 @@
     src: url("../font/Direct%20du%20Gauche.ttf");
     font-family: "Gauche";
 }
-body, label, h1, h2, h3, h4, h5, h6, a, span {
-    font-family: "Roboto", Helvetica, Arial, sans-serif;
-    font-weight: 300;
-}
 body
 {
     font-size: 1.5em;
