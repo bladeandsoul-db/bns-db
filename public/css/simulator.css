@@ -99,10 +99,6 @@ li.skill .name
     width: 230px;
     height: 485px;
 }
-.skill-grid.x1{margin-left:calc(50% - 32px)}
-.skill-grid.x2{margin-left:calc(50% - 64px)}
-.skill-grid.x3{margin-left: 0;}
-
 .skill-tree .node
 {
     position: absolute;
