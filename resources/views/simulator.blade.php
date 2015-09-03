@@ -117,18 +117,20 @@
                         <span class="name">Mist Slash</span>
                         <div class="right-box">
                             <p class="resource">Generates 1 Chi</p>
-                            <p class="point-cost"><img>2 Points</p>
+                            <p class="point-cost">Requires 2 Points</p>
                         </div>
                         <div class="icon">
-                            <img src="img/simulator/skill_assassin_mistSlash.png">
+                            <div class="skill"><img src="img/simulator/skill_assassin_mistSlash.png"></div>
+                            <div class="frame"></div>
                         </div>
                         <div class="info">Deals X-Y Damage</div>
                         <div class="u-cf"></div>
                         <div class="sub-info">
                             <ul>
-                                <li class="adds"></li>
-                                <li class="removes"></li>
-                                <li></li>
+                                <li class="add">Stuns the Target</li>
+                                <li class="add">Stuns the Target</li>
+                                <li class="remove">Stuns the Target</li>
+                                <li>Stuns the Target</li>
                             </ul>
                         </div>
 
@@ -152,6 +154,15 @@
                                 </li>
                             </ul>
                         </div>
+                        <div class="skill-requirements">
+                            <p class="fat">Activation Requirement</p>
+                            <p>Disruption stance</p>
+                            <p class="fat">Obtained from</p>
+                            <p>Spiral Labyrinth</p>
+                        </div>
+
+
+
                     </div>
                 </div>
             </div>

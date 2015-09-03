@@ -114,12 +114,6 @@ li.skill .name
 .skill-tree .node.y4{top: 311px}
 .skill-tree .node.y5{top: 411px}
 
-.node .frame,
-.node .icon,
-.node .icon img
-{
-    /*border-radius: 9px;*/
-}
 .node .icon img
 {
     margin: 2px;
@@ -137,27 +131,31 @@ li.skill .name
 .node .frame
 {
     background-image: url(../img/simulator/normal_frame.png);
-    -webkit-background-size: 64px 64px;
+    background-repeat: no-repeat;
     background-size: 64px 64px;
-    /*box-shadow: inset 0 0 0 3px #ccc;*/
+    -webkit-background-size: 64px 64px;
+
+}
+
+.node .frame
+{
+    box-shadow: 0 0 0 2px #fff,
+                0 0 7px 4px #FFB400;
 
 }
 .node .frame:before { /* preload image to counter delay */
     content:  url(../img/simulator/normal_frame_blue.png);
+    background-repeat: no-repeat;
     width:0;
     height:0;
     visibility:hidden;
 }
 .node .frame:hover
 {
+    cursor:pointer;
     background-image: url(../img/simulator/normal_frame_blue.png);
+    background-repeat: no-repeat;
 }
-.node .icon
-{
-    /*background-image: url("../img/simulator/skill_assassin_mistSlash.png");*/
-
-}
-
 
 
 .skill-description
@@ -170,7 +168,7 @@ li.skill .name
     font-size: 2rem;
     color: #6dc0cd;
     display: block;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 
 }
 .skill-description .right-box
@@ -181,22 +179,50 @@ li.skill .name
 }
 .skill-description .resource
 {
+    font-size: 14px;    font-weight: 600;
     margin:0;
     text-align: right;
 }
 .skill-description .point-cost
 {
+    font-size: 14px;    font-weight: 600;
     margin:0;
     text-align: right;
-    color: #75DC8A;
+    color: #44cc55;
 }
 .skill-description .icon
 {
+    position: relative;
     width: 64px;
     height: 64px;
     display: inline-block;
     float: left;
 }
+
+.skill-description .skill img
+{
+    margin: 2px;
+    height: 60px;
+    width: 60px;
+    border-radius: 7px;
+}
+.skill-description .frame,
+.skill-description .skill
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 7px;
+}
+.skill-description .frame
+{
+    background-image: url(../img/simulator/normal_frame.png);
+    background-repeat: no-repeat;
+    -webkit-background-size: 64px 64px;
+    background-size: 64px 64px;
+}
+
+
 
 .skill-description .info
 {
@@ -205,6 +231,36 @@ li.skill .name
     width: calc(100% - 64px);
     font-size: 1.8rem;
     line-height: 2rem;
+}
+
+.sub-info ul
+{
+    margin: 1rem 0;
+}
+.sub-info li
+{
+    list-style: none;
+    margin:0;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 15px;
+}
+.sub-info li.remove
+{
+    text-decoration: line-through;
+    color: #999;
+}
+.sub-info li.add
+{
+    color: #44cc55;
+}
+li.add:after {
+    content: "Add";
+    margin-left: 5px;
+    padding: 0px 7px;
+    background-color: #00a805;
+    color: #DAFFDE;
+    border-radius: 10px;
 }
 .skill-description .info-table
 {
@@ -228,12 +284,27 @@ li.skill .name
     border: 1px solid #ff3300;
     display: block;
     text-align: center;
+    font-size: 11px;
+    font-weight: 600;
 }
 .skill-description .info-table li .head {
     line-height: 20px;
 }
 .skill-description .info-table li .body {
     line-height: 60px;
+}
+
+.skill-requirements p
+{
+    font-size: 1.3rem;
+    line-height: 1.5rem;
+    margin: 0 0 1rem 0;
+}
+.skill-requirements .fat
+{
+    margin:0;
+    font-size: 1.5rem;
+    font-weight: 600;
 }
 
 @media(min-width: 750px){
