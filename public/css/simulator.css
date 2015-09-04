@@ -89,7 +89,6 @@ li.skill .name
     margin: auto;
     position: absolute;
     height: 6rem;
-    width: 100%;
     font-size: 2rem;
     display:none;
 }
