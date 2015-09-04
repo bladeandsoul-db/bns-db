@@ -66,7 +66,7 @@
                 </div>
                 <div class="skill-tree">
                     <div class="inner">
-                        <div class="noTree">Skill does not have a skill tree</div>
+                        <div class="noTree"></div>
                         <div class="skill-grid">
                             {{--<div class="node x1 y1">--}}
                                 {{--<div class="icon"><img src="img/simulator/skill_assassin_mistSlash.png"></div>--}}

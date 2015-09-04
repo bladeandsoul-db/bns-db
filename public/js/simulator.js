@@ -1,11 +1,22 @@
 $.getJSON("json/Assassin.json", function(json) {
     createSimulator("Assassin",json);
+
+    //activate first entry
+    $(".skill-list .list .skill")[0].click()
+
 });
 skillTree = {
     storage:[],
+    activeTree:undefined,
     pull: function(skillName)
     {
-        return skillTree.storage[skillName].html();
+        skillTree.activeTree = skillName;
+        $(".skill-grid").html(skillTree.storage[skillName].html());
+        //return skillTree.storage[skillName].html();
+    },
+    push: function()
+    {
+        skillTree.storage[skillTree.activeTree].html($(".skill-grid").html());
     },
     generate: function(skill){
         var nodeBag = $("<skill/>");
@@ -94,14 +105,26 @@ function generateSkillListEntry(skillObj)
         ]
     });
     $(skillEntry).click(function(){
-        $(".skill-grid").html("");
-        if(skillObj.Nodes){
-            $(".noTree").hide();
-            $(".skill-grid").html(skillTree.pull(skillObj.Name));
-        }
-        else
-            $(".noTree").show();
 
+        $(".skill-list .skill").removeClass("active");
+        $(this).addClass("active");
+
+        $(".skill-grid").html("");
+        if(skillObj.Nodes.length){
+
+            $(".noTree").hide();
+            skillTree.pull(skillObj.Name);
+
+            //Build new Events for Nodes after Pulling it from storage
+            $(".node").click(function(){
+                $(this).toggleClass("active");
+                skillTree.push()
+            });
+        }
+        else{
+            $(".noTree").html("<b style='color:#ff3300;'>"+skillObj.Name+"</b> does not have a skill tree");
+            $(".noTree").show();
+        }
     });
     return skillEntry;
 }

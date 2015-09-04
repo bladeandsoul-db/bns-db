@@ -31,7 +31,7 @@
       ]
     },
     {
-      "Name":"Mist Slash2",
+      "Name":"Mist Slash II",
       "Icon":"img/simulator/Assassin/skill_mistSlash.png",
       "Nodes":[
         {
@@ -46,8 +46,9 @@
       ]
     },
     {
-      "Name":"Mist Slash3",
-      "Icon":"img/simulator/Assassin/skill_mistSlash.png"
+      "Name":"Mist Slash III",
+      "Icon":"img/simulator/Assassin/skill_mistSlash.png",
+      "Nodes":[]
     }
   ]
 }

@@ -55,7 +55,8 @@
     cursor: pointer;
     transition: margin-left 0.2s;
 }
-.skill-list .list li.skill:hover
+.skill-list .list li.skill:hover,
+.skill-list .list li.skill.active
 {
     margin-left: 5px;
 }
@@ -87,7 +88,7 @@ li.skill .name
     bottom: 0;
     margin: auto;
     position: absolute;
-    height: 3rem;
+    height: 6rem;
     width: 100%;
     font-size: 2rem;
     display:none;
@@ -153,7 +154,6 @@ li.skill .name
 {
     box-shadow: 0 0 0 2px #fff,
                 0 0 7px 4px #FFB400;
-
 }
 .node .frame:before { /* preload image to counter delay */
     content:  url(../img/simulator/normal_frame_blue.png);
@@ -168,8 +168,12 @@ li.skill .name
     background-image: url(../img/simulator/normal_frame_blue.png);
     background-repeat: no-repeat;
 }
-
-
+.node.active .frame
+{
+    box-shadow:none;
+}
+.node.active .frame:hover
+{}
 .skill-description
 {
     margin: 1rem 0;
