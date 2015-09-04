@@ -117,14 +117,14 @@
                     <div class="inner">
 
                         {{--<span class="name">Mist Slash</span>--}}
-                        {{--<div class="right-box">--}}
+                        <div class="right-box">
                             {{--<p class="resource">Generates 1 Chi</p>--}}
                             {{--<p class="point-cost">Requires 2 Points</p>--}}
-                        {{--</div>--}}
-                        {{--<div class="icon">--}}
+                        </div>
+                        <div class="icon">
                             {{--<div class="skill"><img src="img/simulator/skill_assassin_mistSlash.png"></div>--}}
                             {{--<div class="frame"></div>--}}
-                        {{--</div>--}}
+                        </div>
                         {{--<div class="info">Deals X-Y Damage</div>--}}
                         {{--<div class="u-cf"></div>--}}
                         {{--<div class="sub-info">--}}

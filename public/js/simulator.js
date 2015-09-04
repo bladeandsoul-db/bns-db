@@ -5,6 +5,18 @@ $.getJSON("json/Assassin.json", function(json) {
     $(".skill-list .list .skill")[0].click()
 
 });
+nodeInfo = {
+    storage:[],
+    pull: function(){
+
+    },
+    push: function(){
+
+    },
+    generate:function(){
+
+    }
+}
 skillTree = {
     storage:[],
     activeTree:undefined,
@@ -45,20 +57,20 @@ function createSimulator(className, skillData)
 {
     var availableKeys = [
         "LB",
-        //"RB",
-        //"F",
-        //"TAB",
-        //"1",
-        //"2",
-        //"3",
-        //"4",
-        //"Z",
-        //"X",
-        //"C",
-        //"V",
-        //"Q",
-        //"E",
-        //"S"
+        "RB",
+        "F",
+        "TAB",
+        "1",
+        "2",
+        "3",
+        "4",
+        "Z",
+        "X",
+        "C",
+        "V",
+        "Q",
+        "E",
+        "S"
     ];
     availableKeys.forEach(function(key, keyIndex, keyAr){
         if(skillData[key])
@@ -104,10 +116,50 @@ function generateSkillListEntry(skillObj)
             })
         ]
     });
+
     $(skillEntry).click(function(){
+
+        //return if already active
+        if($(this).hasClass("active"))
+            return;
 
         $(".skill-list .skill").removeClass("active");
         $(this).addClass("active");
+
+        //Add Skill Description
+        /*
+            Herausfinden welche Node aktiv ist
+            Information zu dieser Node in Info-Box anzeigen
+            Wenn keine Node aktiv -> defaultNode Data laden
+
+        */
+
+        //$(".skill-description .inner").html("");
+        if(skillObj.Name)
+        {
+            var descInfo = $("<span/>", {
+                "class":"name",
+                "html":skillObj.Name
+            });
+            //Append
+        }
+        if(skillObj.Resource)
+        {
+            var descResource = $("<p/>",{
+                "class":"resource",
+                "html": "Generates 1 Chi"
+            });
+        }
+        if(skillObj.pointCost)
+        {
+            var descPointCost = $("<p/>",{
+                "class":"point-cost",
+                "html": "Requires 2 Points"
+            });
+        }
+
+
+
 
         $(".skill-grid").html("");
         if(skillObj.Nodes.length){

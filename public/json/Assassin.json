@@ -3,12 +3,17 @@
     {
       "Name":"Mist Slash",
       "Icon":"img/simulator/Assassin/skill_mistSlash.png",
+      "DefaultNode":{
+        "Info":"nodeDefault"
+      },
       "Nodes":[
         {
-          "Position": "x1 y1"
+          "Position": "x1 y1",
+          "Info":"node1"
         },
         {
-          "Position": "x1 y2"
+          "Position": "x1 y2",
+          "Info":"node1"
         },
         {
           "Position": "x1 y3"

@@ -52,8 +52,11 @@
 }
 .skill-list .list li.skill
 {
-    cursor: pointer;
     transition: margin-left 0.2s;
+}
+.skill-list .list li.skill:not(.active)
+{
+    cursor: pointer;
 }
 .skill-list .list li.skill:hover,
 .skill-list .list li.skill.active
@@ -184,7 +187,6 @@ li.skill .name
     color: #6dc0cd;
     display: block;
     margin-bottom: 1rem;
-
 }
 .skill-description .right-box
 {
