@@ -81,7 +81,17 @@ li.skill .name
     overflow: hidden;
     text-overflow: clip;
 }
-
+.noTree
+{
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    position: absolute;
+    height: 3rem;
+    width: 100%;
+    font-size: 2rem;
+    display:none;
+}
 .skill-tree
 {
     width: calc(100% - 101px);
