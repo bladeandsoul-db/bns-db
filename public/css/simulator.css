@@ -151,31 +151,69 @@ li.skill .name
     -webkit-background-size: 64px 64px;
 
 }
-
-.node .frame
-{
-    box-shadow: 0 0 0 2px #fff,
-                0 0 7px 4px #FFB400;
-}
-.node .frame:before { /* preload image to counter delay */
-    content:  url(../img/simulator/normal_frame_blue.png);
-    background-repeat: no-repeat;
-    width:0;
-    height:0;
-    visibility:hidden;
-}
 .node .frame:hover
 {
-    cursor:pointer;
     background-image: url(../img/simulator/normal_frame_blue.png);
     background-repeat: no-repeat;
 }
-.node.active .frame
-{
-    box-shadow:none;
+.node .frame:before { /* preload image to prevent delay */
+    content:  url(../img/simulator/normal_frame_blue.png);
+    background-repeat: no-repeat;
+    visibility:hidden;
 }
-.node.active .frame:hover
+
+
+
+.node.available /* Dark but shiny, clickable */
+{
+    cursor:pointer;
+    border-radius: 3px;
+    box-shadow: 0 0 0 2px #fff,
+                0 0 7px 4px #FFB400;
+}
+.node.unavailable /* Dark not shiny, clickable */
 {}
+.node.active /* Light */
+{}
+.node.disabled /* Dark and crossed */
+{}
+.node.available:before
+{
+    content:"dark";
+    position:absolute;
+    color: white;
+    z-index: 99;
+    display:block;
+}
+
+.node.unavailable:before
+{
+    content:"dark";
+    position:absolute;
+    color: white;
+    z-index: 99;
+    display:block;
+}
+
+.node.active:before
+{
+    content:"LIGHT";
+    position:absolute;
+    color: white;
+    z-index: 99;
+    display:block;
+}
+
+
+.node.disabled:before
+{
+    content:"X";
+    position:absolute;
+    color: red;
+    z-index: 99;
+    display:block;
+}
+
 .skill-description
 {
     margin: 1rem 0;

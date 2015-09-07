@@ -52,8 +52,48 @@
     },
     {
       "Name":"Mist Slash III",
-      "Icon":"img/simulator/Assassin/skill_mistSlash.png",
-      "Nodes":[]
+      "Icon":"img/simulator/Assassin/skill_mistSlash.png"
+    }
+  ],
+  "RB": [
+    {
+      "Name":"Heart Stab",
+      "Icon":"img/simulator/Assassin/skill_heartStab.png",
+      "DefaultNode":{
+        "Info":"nodeDefault"
+      },
+      "Nodes":[
+        {
+          "Position": "x1 y1"
+        },
+        {
+          "Position": "x1 y2"
+        },
+        {
+          "Position": "x1 y3"
+        },
+        {
+          "Position": "x3 y3"
+        },
+        {
+          "Position": "x1 y4"
+        },
+        {
+          "Position": "x2 y4"
+        },
+        {
+          "Position": "x3 y4"
+        },
+        {
+          "Position": "x1 y5"
+        },
+        {
+          "Position": "x2 y5"
+        },
+        {
+          "Position": "x3 y5"
+        }
+      ]
     }
   ]
 }
