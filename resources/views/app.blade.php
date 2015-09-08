@@ -77,6 +77,7 @@
         <script src="{{asset("/js/TweenMax.min.js")}}"></script>
         <script src="{{asset("/js/jquery.min.js")}}"></script>
         <script src="{{asset("/js/particles.min.js")}}"></script>
+        <script src="{{asset("/js/hashids.min.js")}}"></script>
         <script src="{{asset("/js/script.js")}}"></script>
         @yield("js")
     </body>

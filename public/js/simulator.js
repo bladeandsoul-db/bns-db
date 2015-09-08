@@ -2,7 +2,7 @@
         createSimulator("Assassin",json);
         console.log(json);
         //activate first entry
-        $(".skill-list .list .skill")[0].click();
+        $(".skill-list .list .skill")[3].click();
 
     });
 
@@ -45,6 +45,8 @@ $.fn.changeClass = function(newClass){
 };
 $.fn.getNodePosition = function()
 {
+    if(!this.length)
+        return;
     var classes = this.attr("class"),
         rx = new RegExp("[x][1-3]","i"),
         ry = new RegExp("[y][1-5]", "i"), // short regex to get the current y-value
@@ -52,7 +54,7 @@ $.fn.getNodePosition = function()
         y = classes.match(ry)[0],
         xNum = Number(x[1]),
         yNum = Number(y[1]);
-    return {"X":xNum, "Y":yNum, "fullX": x, "fullY":y, "both": x+" "+y};
+    return {"X":xNum, "Y":yNum, "fullX": x, "fullY":y, "both": x+" "+y, "node":$(this)};
 };
 $.fn.getNodeSiblings = function()
 {
@@ -60,13 +62,107 @@ $.fn.getNodeSiblings = function()
         siblings = $(".node."+position.fullY+":not(."+position.fullX+")");
     return siblings;
 };
-$.fn.getNodeChildren = function()
+$.fn.getNodeSiblingsRight = function()
 {
     var pos = this.getNodePosition(),
-        maxX = 3,
-        maxY = 5;
-    return this.getNodeSiblings();
+        rightSideNodes = [],
+        toCheck = "";
+
+    if(pos.X == 3)
+        return false;
+    if($(".node."+pos.fullY).length == 1)
+        return false;
+
+    for(var i = pos.X+1; i<4; i++)
+    {
+        if(i> pos.X+1)
+        toCheck+=", ";
+        toCheck+=".node.x"+i+"."+pos.fullY;
+    }
+
+
+    return $(toCheck)
+
+    //var selector = $(".node."+pos.fullY+":not(."+pos.fullX+")");
+    //if(selector.length)
+    //    return selector;
+    //if(pos.X == 3)
+    //    return false;
 };
+
+$.fn.getNodeParent = function()
+{
+    var pos = this.getNodePosition();
+    for(var i = pos.Y-1; i>0; i--) // all nodes above this one
+    {
+        var directParent = $(".node."+pos.fullX+".y"+i),
+            oneOffsetParent = $(".node.x"+(pos.X-1)+".y"+i),
+            twoOffsetParent = $(".node.x"+(pos.X-2)+".y"+i);
+        if(directParent.length)
+            return directParent;
+        else if(oneOffsetParent.length)
+            return oneOffsetParent;
+        else if(twoOffsetParent.length)
+            return twoOffsetParent;
+        else
+            return false;
+    }
+        return false;
+};
+
+
+
+$.fn.getNodeChildren = function()
+{
+    var pos = this.getNodePosition();
+
+    if(pos.X == 1)
+        console.log("1")
+    else if(pos.X == 2)
+        console.log("2")
+    else if(pos.X == 3)
+        console.log("3")
+};
+//$.fn.getNodeChildren = function()
+//{
+//    var pos = this.getNodePosition(),
+//        maxX = 3,
+//        maxY = 5,
+//        siblings = this.getNodeSiblings(),
+//        numSiblings = siblings.length,
+//        siblingsPositions = [];
+//
+//    //for(var i = 0; i<numSiblings; i++)
+//    //{
+//    //    siblingsPositions.push({"sibling":siblings[i], "position":$(siblings[i]).getNodePosition()});
+//    //}
+//
+//    if(pos.X == 1)
+//    {
+//
+//    }
+//    else if(pos.X == 2)
+//    {
+//
+//    }
+//    else if(pos.X == 3)
+//    {
+//        var children = ""   ;
+//        for(var i = pos.Y; i<maxY; i++)
+//        {
+//
+//            var selector = ".node.x"+pos.X+".y"+(i+1);
+//            if($(selector))
+//            {
+//                if(i>pos.Y)
+//                    children+=", ";
+//                children+=selector;
+//            }
+//
+//        }
+//        return($(children));
+//    }
+//};
 $.fn.disableChildNodes = function()
 {
     var pos = this.getNodePosition();
@@ -127,30 +223,155 @@ nodeInfo = {
     generate:function(){
 
     }
-}
+};
+
+
+
 skillTree = {
     storage:[],
+    nodes:[],
     activeTree:undefined,
     pull: function(skillName)
     {
         skillTree.activeTree = skillName;
-        $(".skill-grid").html(skillTree.storage[skillName].html());
-        //return skillTree.storage[skillName].html();
+        //nodes neu initialisieren
+        $(".skill-grid").html(skillTree.storage[skillName]);
     },
     push: function()
     {
-        skillTree.storage[skillTree.activeTree].html($(".skill-grid").html());
+        skillTree.storage[skillTree.activeTree] = $(".skill-grid").children();
+    },
+    getId: function(type,options)
+    {
+        var type = type || "self",
+            validType = [
+                "self",
+                "children",
+                "parent",
+                "parents"
+            ];
+        if(validType.indexOf(type) < 0)
+            return "1";
+
+        if(!options.skill)
+            return "2";
+
+        //console.log(x in options & y in options)
+        if("x" in options & "y" in options)
+            var func = "xy";
+        else if("x" in options)
+            var func = "x";
+        else if("y" in options)
+            var func = "y";
+        else
+            return false;
+        /* Self Functions
+        ------------------------------------------- */
+        if(type == "self")
+        {
+            if(func == "xy")
+            {
+                var returnValue = "";
+                $.each(skillTree.nodes[options.skill], function(index, data) {
+                    if(data.x == options.x & data.y == options.y)
+                    {
+                        returnValue = data.id;
+                        return false; // Break out of loop
+                    }
+                });
+                if(returnValue == "")
+                    returnValue = false;
+                return returnValue;
+            }
+            else if(func == "x")
+            {
+                var returnValue = [];
+                $.each(skillTree.nodes[options.skill], function(index, data) {
+                    if(data.x == options.x)
+                        returnValue.push(data.id);
+                });
+                if(!returnValue.length)
+                    returnValue = false;
+                return returnValue;
+            }
+            else if(func == "y")
+            {
+                var returnValue = [];
+                $.each(skillTree.nodes[options.skill], function(index, data) {
+                    if(data.y == options.y)
+                        returnValue.push(data.id);
+                });
+                if(!returnValue.length)
+                    returnValue = false;
+                return returnValue;
+            }
+        }
+        /* Children Functions
+         ------------------------------------------- */
+
+        /* Parent Functions
+         ------------------------------------------- */
+
+        /* Parents Functions
+         ------------------------------------------- */
+
+
+
+
+        //if(!param.skill || !skillTree.nodes.hasOwnProperty(param.skill))
+        //{
+        //    console.log("skill not found and/or declared")
+        //    return false;
+        //}
+        //var returnValue = [];
+        //$.each(skillTree.nodes[param.skill], function(index, data) {
+        //    if(param.x & param.y)
+        //    {
+        //        if(data.x == param.x & data.y == param.y)
+        //        {
+        //            returnValue = data.id;
+        //            return false;
+        //        }
+        //    }
+        //    else if(param.x & !param.y)
+        //    {
+        //        console.log("x");
+        //        if(data.x == param.x)
+        //        {
+        //            returnValue.push(data.id);
+        //        }
+        //    }
+        //    else if(param.y & !param.x)
+        //    {
+        //        console.log(param.y, data.y);
+        //        if(data.y == param.y)
+        //        {
+        //            returnValue.push(data.id);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        returnValue = false;
+        //        return false;
+        //    }
+        //});
+        //return returnValue;
     },
     generate: function(skill){
-        var nodeBag = $("<skill/>");
+        var nodeBag = $();
+        skillTree.nodes[skill.Name] = [];
         skill.Nodes.forEach(function(node, nodeIndex, nodeAr) {
             if (node.Position)
             {
                 if (!node.Icon)
                     node.Icon = skill.Icon;
-
+                var hashids = new Hashids("this is my salt", 4, "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890");
+                var x = Number(node.Position[1]),
+                    y = Number(node.Position[4]),
+                    id = hashids.encode([x,y]);
                 var htmlNode = $("<div/>", {
                     "class": "node " + node.Position + " unavailable",
+                    "id": id,
                     "html": [
                         $("<div/>", {
                             "class": "icon",
@@ -161,12 +382,14 @@ skillTree = {
                         })
                     ]
                 });
-                nodeBag.append(htmlNode);
+                nodeBag = nodeBag.add(htmlNode);
+                skillTree.nodes[skill.Name].push({"id":id, "x":x, "y":y});
             }
             else
                 console.log("Error. No position given.")
         });
-        $(nodeBag).children().getFirstNode().changeClass("available")
+
+        $(nodeBag).getFirstNode().changeClass("available")
         skillTree.storage[skill.Name] = nodeBag;
     }
 };
@@ -289,7 +512,7 @@ function generateSkillListEntry(skillObj)
 
             //Build new Events for Nodes after Pulling it from storage
             $(".node").click(function(){
-                $(this).clickNode();
+                //$(this).clickNode();
                 //$(this).toggleClass("active");
                 skillTree.push()
             });
