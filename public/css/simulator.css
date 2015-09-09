@@ -1,5 +1,9 @@
 
-
+#class-name
+{
+    color: #ff3300;
+    padding: 0 0 2rem 1rem;
+}
 .simulator-section
 {
     padding: 5rem 0;
@@ -131,10 +135,10 @@ li.skill .name
 
 .node .icon img
 {
-    margin: 2px;
-    height: 60px;
-    width: 60px;
-    border-radius: 7px;
+    /* 54 + 5*2 = 64 */
+    margin: 5px;
+    height: 54px;
+    width: 54px;
 }
 .node .frame, .node .icon
 {
@@ -145,7 +149,7 @@ li.skill .name
 }
 .node .frame
 {
-    background-image: url(../img/simulator/normal_frame.png);
+    background-image: url(../img/simulator/normal_frame_dark.png);
     background-repeat: no-repeat;
     background-size: 64px 64px;
     -webkit-background-size: 64px 64px;
@@ -153,66 +157,64 @@ li.skill .name
 }
 .node .frame:hover
 {
-    background-image: url(../img/simulator/normal_frame_blue.png);
-    background-repeat: no-repeat;
+    background-image: url(../img/simulator/normal_frame_blue_dark.png);
 }
 .node .frame:before { /* preload image to prevent delay */
-    content:  url(../img/simulator/normal_frame_blue.png);
+    content:url(../img/simulator/normal_frame.png)
+            url(../img/simulator/normal_frame_dark.png)
+            url(../img/simulator/normal_frame_blue.png)
+            url(../img/simulator/normal_frame_blue_dark.png);
     background-repeat: no-repeat;
     visibility:hidden;
 }
 
-
-
-.node.available /* Dark but shiny, clickable */
+.node.available
 {
     cursor:pointer;
     border-radius: 3px;
     box-shadow: 0 0 0 2px #fff,
                 0 0 7px 4px #FFB400;
+    background-color: white;
 }
-.node.unavailable /* Dark not shiny, clickable */
-{}
-.node.active /* Light */
-{}
+.node.available .frame,
+.node.unavailable .frame
+{
+    background-image: url(../img/simulator/normal_frame_dark.png);
+    background-repeat: no-repeat;
+    background-size: 64px 64px;
+    -webkit-background-size: 64px 64px;
+}
+.node.available .frame:hover,
+.node.unavailable .frame:hover
+{
+    background-image: url(../img/simulator/normal_frame_blue_dark.png);
+}
+.node.active .frame{
+    background-image: url(../img/simulator/normal_frame.png);
+    background-repeat: no-repeat;
+    background-size: 64px 64px;
+    -webkit-background-size: 64px 64px;
+}
+.node.active .frame:hover {
+    background-image: url(../img/simulator/normal_frame_blue.png);
+}
 .node.disabled /* Dark and crossed */
-{}
-.node.available:before
 {
-    content:"dark";
-    position:absolute;
-    color: white;
-    z-index: 99;
-    display:block;
+
 }
-
-.node.unavailable:before
-{
-    content:"dark";
-    position:absolute;
-    color: white;
-    z-index: 99;
-    display:block;
-}
-
-.node.active:before
-{
-    content:"LIGHT";
-    position:absolute;
-    color: white;
-    z-index: 99;
-    display:block;
-}
-
-
 .node.disabled:before
 {
-    content:"X";
-    position:absolute;
+    position: absolute;
+    z-index: 999;
+    content: "X";
     color: red;
-    z-index: 99;
-    display:block;
+    display: block;
+    left: 0;
+    right: 0;
+    margin-top: 50%;
+    line-height: 20%;
 }
+
 
 .skill-description
 {

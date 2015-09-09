@@ -5,61 +5,11 @@
 @section("content")
     <div class="section simulator-section">
         <div class="container u-full-width simulator-window">
+            <h3 id="class-name" class="brushed"></h3>
             <div class="lg-seven sm-twelve columns">
                 <div class="skill-list">
                     <div class="inner">
                         <ul class="list">
-
-                            {{--<li class="key">LB</li>--}}
-                            {{--<li class="skill" title="Mist Slash">--}}
-                                {{--<div class="thumb"><img src="img/simulator/skill_assassin_mistSlash.png"></div>--}}
-                                {{--<div class="name">Mist Slash</div>--}}
-                            {{--</li>--}}
-                            {{--<li class="skill">--}}
-                                {{--<div class="thumb"><img src="img/simulator/skill_assassin_mistSlash.png"></div>--}}
-                                {{--<div class="name">Mist Slash</div>--}}
-                            {{--</li>--}}
-                            {{--<li class="skill">--}}
-                                {{--<div class="thumb"><img src="img/simulator/skill_assassin_mistSlash.png"></div>--}}
-                                {{--<div class="name">Mist Slash</div>--}}
-                            {{--</li>--}}
-                            {{--<li class="key">RB</li>--}}
-                            {{--<li class="skill">--}}
-                                {{--<div class="thumb"><img src="img/simulator/skill_assassin_mistSlash.png"></div>--}}
-                                {{--<div class="name">Mist Slash</div>--}}
-                            {{--</li>--}}
-                            {{--<li class="skill">--}}
-                                {{--<div class="thumb"><img src="img/simulator/skill_assassin_mistSlash.png"></div>--}}
-                                {{--<div class="name">Mist Slash</div>--}}
-                            {{--</li>--}}
-                            {{--<li class="skill">--}}
-                                {{--<div class="thumb"><img src="img/simulator/skill_assassin_mistSlash.png"></div>--}}
-                                {{--<div class="name">Mist Slash</div>--}}
-                            {{--</li>--}}
-                            {{--<li class="skill">--}}
-                                {{--<div class="thumb"><img src="img/simulator/skill_assassin_mistSlash.png"></div>--}}
-                                {{--<div class="name">Mist Slash</div>--}}
-                            {{--</li>--}}
-                            {{--<li class="skill">--}}
-                                {{--<div class="thumb"><img src="img/simulator/skill_assassin_mistSlash.png"></div>--}}
-                                {{--<div class="name">Mist Slash</div>--}}
-                            {{--</li>--}}
-                            {{--<li class="skill">--}}
-                                {{--<div class="thumb"><img src="img/simulator/skill_assassin_mistSlash.png"></div>--}}
-                                {{--<div class="name">Mist Slash</div>--}}
-                            {{--</li>--}}
-                            {{--<li class="skill">--}}
-                                {{--<div class="thumb"><img src="img/simulator/skill_assassin_mistSlash.png"></div>--}}
-                                {{--<div class="name">Mist Slash</div>--}}
-                            {{--</li>--}}
-                            {{--<li class="skill">--}}
-                                {{--<div class="thumb"><img src="img/simulator/skill_assassin_mistSlash.png"></div>--}}
-                                {{--<div class="name">Mist Slash</div>--}}
-                            {{--</li>--}}
-                            {{--<li class="skill">--}}
-                                {{--<div class="thumb"><img src="img/simulator/skill_assassin_mistSlash.png"></div>--}}
-                                {{--<div class="name">Mist Slash</div>--}}
-                            {{--</li>--}}
 
                         </ul>
                     </div>
@@ -68,45 +18,6 @@
                     <div class="inner">
                         <div class="noTree"></div>
                         <div class="skill-grid">
-                            {{--<div class="node x1 y1">--}}
-                                {{--<div class="icon"><img src="img/simulator/skill_assassin_mistSlash.png"></div>--}}
-                                {{--<div class="frame"></div>--}}
-                            {{--</div>--}}
-
-                            {{--<div class="node x1 y2">--}}
-                                {{--<div class="icon"><img src="img/simulator/skill_assassin_mistSlash.png"></div>--}}
-                                {{--<div class="frame"></div>--}}
-                            {{--</div>--}}
-
-                            {{--<div class="node x1 y3">--}}
-                                {{--<div class="icon"><img src="img/simulator/skill_assassin_mistSlash.png"></div>--}}
-                                {{--<div class="frame"></div>--}}
-                            {{--</div>--}}
-
-                            {{--<div class="node x2 y3">--}}
-                                {{--<div class="icon"><img src="img/simulator/skill_assassin_mistSlash.png"></div>--}}
-                                {{--<div class="frame"></div>--}}
-                            {{--</div>--}}
-
-                            {{--<div class="node x1 y4">--}}
-                                {{--<div class="icon"><img src="img/simulator/skill_assassin_mistSlash.png"></div>--}}
-                                {{--<div class="frame"></div>--}}
-                            {{--</div>--}}
-
-                            {{--<div class="node x2 y4">--}}
-                                {{--<div class="icon"><img src="img/simulator/skill_assassin_mistSlash.png"></div>--}}
-                                {{--<div class="frame"></div>--}}
-                            {{--</div>--}}
-
-                            {{--<div class="node x1 y5">--}}
-                                {{--<div class="icon"><img src="img/simulator/skill_assassin_mistSlash.png"></div>--}}
-                                {{--<div class="frame"></div>--}}
-                            {{--</div>--}}
-
-                            {{--<div class="node x2 y5">--}}
-                                {{--<div class="icon"><img src="img/simulator/skill_assassin_mistSlash.png"></div>--}}
-                                {{--<div class="frame"></div>--}}
-                            {{--</div>--}}
 
                         </div>
                     </div>
