@@ -165,17 +165,19 @@ li.skill .name
     background-size: 64px 64px;
     -webkit-background-size: 64px 64px;
 }
-.node .frame:before { /* preload image to prevent delay */
-    content:url(../img/simulator/default.png)
-    url(../img/simulator/default_dark.png)
-    url(../img/simulator/default_dark_plus.png)
-    url(../img/simulator/blue.png)
-    url(../img/simulator/blue_dark.png)
-    url(../img/simulator/blue_dark_plus.png)
-    url(../img/simulator/blue_dark_cross.png);
-    background-repeat: no-repeat;
-    visibility:hidden;
-}
+/* Preloading images
+------------------------------------------- */
+.node.preload1{background-image:     url(../img/simulator/default.png);}
+.node.preload2{background-image:     url(../img/simulator/default_dark.png);}
+.node.preload3{background-image:     url(../img/simulator/default_dark_plus.png);}
+.node.preload4{background-image:     url(../img/simulator/blue.png);}
+.node.preload5{background-image:     url(../img/simulator/blue_dark.png);}
+.node.preload6{background-image:     url(../img/simulator/blue_dark_plus.png);}
+.node.preload7{background-image:     url(../img/simulator/blue_dark_cross.png);}
+
+
+
+
 .node.available .frame{ background-image: url(../img/simulator/default_dark_plus.png);
 }
 .node.available .frame:hover{ background-image: url(../img/simulator/blue_dark_plus.png);}
