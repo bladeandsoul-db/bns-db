@@ -87,7 +87,6 @@ $.fn.clickNode = function(){
 
         }
 
-
         children.each(function()
         {
             $(this).changeClass("available");

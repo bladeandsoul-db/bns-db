@@ -147,26 +147,8 @@ li.skill .name
     height: 100%;
     border-radius: 7px;
 }
-.node .frame
-{
-    background-image: url(../img/simulator/normal_frame_dark.png);
-    background-repeat: no-repeat;
-    background-size: 64px 64px;
-    -webkit-background-size: 64px 64px;
 
-}
-.node .frame:hover
-{
-    background-image: url(../img/simulator/normal_frame_blue_dark.png);
-}
-.node .frame:before { /* preload image to prevent delay */
-    content:url(../img/simulator/normal_frame.png)
-            url(../img/simulator/normal_frame_dark.png)
-            url(../img/simulator/normal_frame_blue.png)
-            url(../img/simulator/normal_frame_blue_dark.png);
-    background-repeat: no-repeat;
-    visibility:hidden;
-}
+
 
 .node.available
 {
@@ -176,44 +158,36 @@ li.skill .name
                 0 0 7px 4px #FFB400;
     background-color: white;
 }
-.node.available .frame,
-.node.unavailable .frame
-{
-    background-image: url(../img/simulator/normal_frame_dark.png);
-    background-repeat: no-repeat;
-    background-size: 64px 64px;
-    -webkit-background-size: 64px 64px;
-}
-.node.available .frame:hover,
-.node.unavailable .frame:hover
-{
-    background-image: url(../img/simulator/normal_frame_blue_dark.png);
-}
-.node.active .frame{
-    background-image: url(../img/simulator/normal_frame.png);
-    background-repeat: no-repeat;
-    background-size: 64px 64px;
-    -webkit-background-size: 64px 64px;
-}
-.node.active .frame:hover {
-    background-image: url(../img/simulator/normal_frame_blue.png);
-}
-.node.disabled /* Dark and crossed */
-{
 
-}
-.node.disabled:before
+.node .frame
 {
-    position: absolute;
-    z-index: 999;
-    content: "X";
-    color: red;
-    display: block;
-    left: 0;
-    right: 0;
-    margin-top: 50%;
-    line-height: 20%;
+    background-repeat: no-repeat;
+    background-size: 64px 64px;
+    -webkit-background-size: 64px 64px;
 }
+.node .frame:before { /* preload image to prevent delay */
+    content:url(../img/simulator/default.png)
+    url(../img/simulator/default_dark.png)
+    url(../img/simulator/default_dark_plus.png)
+    url(../img/simulator/blue.png)
+    url(../img/simulator/blue_dark.png)
+    url(../img/simulator/blue_dark_plus.png)
+    url(../img/simulator/blue_dark_cross.png);
+    background-repeat: no-repeat;
+    visibility:hidden;
+}
+.node.available .frame{ background-image: url(../img/simulator/default_dark_plus.png);
+}
+.node.available .frame:hover{ background-image: url(../img/simulator/blue_dark_plus.png);}
+
+.node.unavailable .frame{ background-image: url(../img/simulator/default_dark.png);}
+.node.unavailable .frame:hover{ background-image: url(../img/simulator/blue_dark.png);}
+
+.node.active .frame{ background-image: url(../img/simulator/default.png);}
+.node.active .frame:hover { background-image: url(../img/simulator/blue.png);}
+.node.disabled .frame{ background-image: url(../img/simulator/default_dark.png)}
+.node.disabled .frame:hover{ background-image: url(../img/simulator/blue_dark_cross.png);}
+
 
 
 .skill-description
