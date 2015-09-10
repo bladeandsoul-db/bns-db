@@ -1,10 +1,10 @@
+var hashids = new Hashids("this is my salt", 4, "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890");
 $.getJSON("json/Assassin.json", function(json) {
     createSimulator("Assassin",json);
-    //console.log(json);
+
     //activate first entry
     $(".skill-list .list .skill")[3].click();
 });
-
 
 $.fn.getFirstNode = function()
 {
@@ -133,8 +133,22 @@ skillTree = {
     {
         skillTree.storage[skillTree.activeTree] = $(".skill-grid").children();
     },
+    // options -> jquery object machen
+    // aus jquery object x und y auslesen und dann in options umwandeln
     getId: function(type,options)
     {
+
+        if(options instanceof jQuery)
+        {
+            if(!options.attr("id"))
+                return false;
+            var jqueryObj = options,
+                cords = hashids.decode(jqueryObj.attr("id"));
+            options = {"skill":skillTree.activeTree, "x":cords[0], "y":cords[1]};
+
+        }
+
+
         /* Helper Functions
          ------------------------------------------- */
         this.getIdByCords = function(cords){
@@ -194,6 +208,7 @@ skillTree = {
         var type = type || "self",
             validType = [
                 "self",
+                "child",
                 "children",
                 "parent",
                 "parents"
@@ -221,9 +236,52 @@ skillTree = {
         {
             return this.getIdByCords(options);
         }
+        /* Child Functions
+         ------------------------------------------- */
+        if(type == "child")
+        {
+
+        }
         /* Children Functions
          ------------------------------------------- */
+        if(type == "children") {
+            var limit = 4,
+                row = this.getIdByCords({"skill": options.skill, "y": options.y});
 
+            $.each(row, function () {
+                if (this.x > options.x) {
+                    limit = this.x;
+                    return false;
+                }
+            });
+            childrenArray = [];
+
+
+            for (var i = options.x; i<limit; i++)
+            {
+
+                var posX = i,
+                    posY = options.y,
+                    whileDone = false;
+
+                while(whileDone == false)
+                {
+                    posY++;
+                    var children = this.getIdByCords({"skill": options.skill, "x":posX, "y":posY});
+                    if(children)
+                        console.log(children);
+                        //childrenArray.push(children);
+
+                    if(posY == 5)
+                        whileDone = true;
+
+
+                }
+
+            }
+
+
+        }
         /* Parent Functions
          ------------------------------------------- */
         if(type == "parent")
@@ -278,7 +336,6 @@ skillTree = {
             {
                 if (!node.Icon)
                     node.Icon = skill.Icon;
-                var hashids = new Hashids("this is my salt", 4, "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890");
                 var x = Number(node.Position[1]),
                     y = Number(node.Position[4]),
                     id = hashids.encode([x,y]);
@@ -356,7 +413,17 @@ function createSimulator(className, skillData)
 
     });
 }
+function disableChildren(node)
+{
+    var current = skillTree.getId("self", node),
+        children = skillTree.getId("children", node);
 
+    $("#"+current.id).changeClass("disabled");
+    console.log(children);
+    $.each(children, function(){
+        $("#"+this.id).changeClass("disabled")
+    });
+}
 function generateSkillListEntry(skillObj)
 {
     var skillEntry = $("<li/>", {

@@ -161,28 +161,6 @@ li.skill .name
 
 .node .frame
 {
-    background-repeat: no-repeat;
-    background-size: 64px 64px;
-    -webkit-background-size: 64px 64px;
-}
-/*.node .frame:before { *//* preload image to prevent delay */
-    /*position: absolute;*/
-    /*width: 1px;*/
-    /*height: 1px;*/
-    /*background-size: 1px 1px;*/
-    /*content:url(../img/simulator/default.png)*/
-    /*url(../img/simulator/default_dark.png)*/
-    /*url(../img/simulator/default_dark_plus.png)*/
-    /*url(../img/simulator/blue.png)*/
-    /*url(../img/simulator/blue_dark.png)*/
-    /*url(../img/simulator/blue_dark_plus.png)*/
-    /*url(../img/simulator/blue_dark_cross.png);*/
-
-    /*background-repeat: no-repeat;*/
-    /*visibility:hidden;*/
-/*}*/
-.node .frame
-{
     position: absolute;
     top: 0;
     left: 0;
