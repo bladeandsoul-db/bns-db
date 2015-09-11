@@ -313,8 +313,8 @@ skillTree = {
             else
                 console.log("Error. No position given.")
         });
-
-        $(nodeBag).getFirstNode().changeClass("available");
+        if(nodeBag)
+            $(nodeBag).getFirstNode().changeClass("available");
         skillTree.storage[skill.Name] = nodeBag;
     }
 };
