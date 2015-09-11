@@ -291,8 +291,8 @@ skillTree = {
             {
                 if (!node.Icon)
                     node.Icon = skill.Icon;
-                var x = node.Position.x,
-                    y = node.Position.y,
+                var x = node.position.x,
+                    y = node.position.y,
                     id = hashids.encode([x,y]);
                 var htmlNode = $("<div/>", {
                     "class": "node "+"x"+x+" y"+y+" unavailable",
@@ -313,8 +313,7 @@ skillTree = {
             else
                 console.log("Error. No position given.")
         });
-       // console.log(nodeBag.length);
-        //$(nodeBag).getFirstNode().changeClass("available");
+        $(nodeBag).getFirstNode().changeClass("available");
         skillTree.storage[skill.Name] = nodeBag;
     }
 };
