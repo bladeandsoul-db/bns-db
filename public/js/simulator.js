@@ -1,9 +1,8 @@
 var hashids = new Hashids("this is my salt", 4, "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890");
 $.getJSON("json/Assassin.json", function(json) {
     createSimulator("Assassin",json);
-
     //activate first entry
-    $(".skill-list .list .skill")[3].click();
+    $(".skill-list .list .skill")[0].click();
 });
 
 $.fn.getFirstNode = function()
@@ -42,56 +41,35 @@ $.fn.changeClass = function(newClass){
 
     this.addClass(newClass);
 };
-$.fn.getNodePosition = function()
-{
-    if(!this.length)
-        return;
-    var classes = this.attr("class"),
-        rx = new RegExp("[x][1-3]","i"),
-        ry = new RegExp("[y][1-5]", "i"), // short regex to get the current y-value
-        x = classes.match(rx)[0],
-        y = classes.match(ry)[0],
-        xNum = Number(x[1]),
-        yNum = Number(y[1]);
-    return {"X":xNum, "Y":yNum, "fullX": x, "fullY":y, "both": x+" "+y, "node":$(this)};
-};
 
-$.fn.disableChildNodes = function()
-{
-    var pos = this.getNodePosition();
-
-};
 $.fn.clickNode = function(){
     if(this.hasClass("active")){
         console.log("is active");
     }
 
     if(this.hasClass("available")){
-        $(".node.available").each(function(){
-           $(this).changeClass("disabled");
-        });
-        this.changeClass("active");
-
-        var classes = this.attr("class"),
-            re = new RegExp("[y][1-5]", "i"), // short regex to get the current y-value
-            y = classes.match(re)[0],
-            newY = y[0]+(Number(y[1])+1),   // Splitting,incrementing, and joining the old Y-class ( y1 => y2 )
-            siblings = $(".node."+y),
-            children = $(".node."+newY);
-
-        if(children.length > 1)
-            console.log("multiple children: "+ children.length);
-        if(siblings.length > 1){
-            console.log("multiple siblings: "+ siblings.length);
-            this.disableChildNodes();
-
-        }
-
-        children.each(function()
-        {
+        $(this).changeClass("active");
+        var children = skillTree.getId("nextChildren", $(this));
+        $(children).each(function(){
             $(this).changeClass("available");
         });
 
+        var self = skillTree.getId("self", $(this));
+        var siblings = skillTree.getId("self", {"skill":"current", "y":self.y})
+        if(siblings.length>1)
+        {
+            $.each(siblings, function(key, val){
+                if(val.id != self.id)
+                {
+                    var children = skillTree.getId("children", {"skill":"current", "x":val.x,"y":val.y});
+                    $("#"+val.id).changeClass("disabled");
+                    $.each(children, function(key, val)
+                    {
+                        $("#"+val.id).changeClass("disabled");
+                    });
+                }
+            });
+        }
     }
 
     if(this.hasClass("unavailable")){
@@ -126,15 +104,13 @@ skillTree = {
     pull: function(skillName)
     {
         skillTree.activeTree = skillName;
-        //nodes neu initialisieren
         $(".skill-grid").html(skillTree.storage[skillName]);
     },
     push: function()
     {
         skillTree.storage[skillTree.activeTree] = $(".skill-grid").children();
     },
-    // options -> jquery object machen
-    // aus jquery object x und y auslesen und dann in options umwandeln
+
     getId: function(type,options)
     {
 
@@ -208,8 +184,8 @@ skillTree = {
         var type = type || "self",
             validType = [
                 "self",
-                "child",
                 "children",
+                "nextChildren",
                 "parent",
                 "parents"
             ];
@@ -236,96 +212,75 @@ skillTree = {
         {
             return this.getIdByCords(options);
         }
-        /* Child Functions
-         ------------------------------------------- */
-        if(type == "child")
+        if(type == "children")
         {
+            var node = this.getIdByCords(options),
+                currentChildren = [],
+                allChildren = [];
 
-        }
-        /* Children Functions
-         ------------------------------------------- */
-        if(type == "children") {
-            var limit = 4,
-                row = this.getIdByCords({"skill": options.skill, "y": options.y});
+            if(!node.children || !node.children.length)
+                return false;
+            else
+                var nodeChildren = node.children;
 
-            $.each(row, function () {
-                if (this.x > options.x) {
-                    limit = this.x;
-                    return false;
-                }
-            });
-            childrenArray = [];
-
-
-            for (var i = options.x; i<limit; i++)
+            recursiveFunction = function(key, val)
             {
-
-                var posX = i,
-                    posY = options.y,
-                    whileDone = false;
-
-                while(whileDone == false)
-                {
-                    posY++;
-                    var children = this.getIdByCords({"skill": options.skill, "x":posX, "y":posY});
-                    if(children)
-                        console.log(children);
-                        //childrenArray.push(children);
-
-                    if(posY == 5)
-                        whileDone = true;
-
-
-                }
-
-            }
-
-
+                var x = val.x,
+                    y = val.y,
+                    node =  skillTree.getIdByCords({"skill":skillTree.activeTree,"x":x, "y":y});
+                allChildren.push(node);
+                if(!node.children || !node.children.length)
+                    return false;
+                else
+                    var nextChild = node.children;
+                $.each(nextChild, function(key2,val2) {
+                    recursiveFunction(key2, val2)
+                });
+            };
+            $.each(nodeChildren, function(key, val) {
+                recursiveFunction(key, val)
+            });
+            return allChildren;
         }
-        /* Parent Functions
-         ------------------------------------------- */
+        if(type == "nextChildren")
+        {
+            var node = this.getIdByCords(options),
+                children = [];
+            if(!node.children || !node.children.length)
+                return false;
+
+            $.each(node.children, function(nodeIndex, nodeContent){
+                    var x = nodeContent.x,
+                        y = nodeContent.y;
+                    var child = skillTree.getIdByCords({"skill":skillTree.activeTree,"x":x, "y":y})
+                    children.push($("#"+child.id));
+            });
+            return children;
+        }
         if(type == "parent")
         {
-            //check if node is the first node ( y = 1 )
-            if(options.y == 1){
-                console.log("Node has no parent");
-                return false;
-            }
-            var origin = this.getIdByCords(options);
-
-            //check if there's any direct parent above this node
-            for(var posY = options.y-1; posY > 0; posY--) {
-                var Parent = this.getIdByCords({"skill": options.skill, "x": options.x, "y": posY});
-                if (Parent)
-                    break;
-            }
-            //if there was no parent to be found check for possible parents on lower "x" values
-            if(!Parent)
+            var node = this.getIdByCords(options),
+                nodes = skillTree.nodes[skillTree.activeTree],
+                parent;
+            $.each(nodes, function(index, content)
             {
-                for(var posY = options.y-1; posY > 0; posY--) {
-                    var Parent = this.getIdByCords({"skill": options.skill, "x":options.x, "y":posY});
-                    if(Parent)
-                        break;
-                    else if(options.x > 1)
-                    {
-                        var posX = options.x,
-                            whileDone = false;
-                        while(whileDone == false)
+                if(content.children)
+                {
+                    $.each(content.children, function(i, c){
+                        if(c.x == node.x & c.y == node.y)
                         {
-                            posX--;
-                            var Parent = this.getIdByCords({"skill": options.skill, "x":posX, "y":posY});
-                            if(posX == 1 || Parent)
-                                break;
+                            parent = content;
+                            return false;
                         }
-                        if(Parent)
-                            break;
-                    }
-                }
-            }
-            return Parent;
+                    })
+                }else
+                    return false
+            });
+            if(parent)
+                return parent;
+            else
+                return false;
         }
-        /* Parents Functions
-         ------------------------------------------- */
 
     },
     generate: function(skill){
@@ -336,11 +291,11 @@ skillTree = {
             {
                 if (!node.Icon)
                     node.Icon = skill.Icon;
-                var x = Number(node.Position[1]),
-                    y = Number(node.Position[4]),
+                var x = node.Position.x,
+                    y = node.Position.y,
                     id = hashids.encode([x,y]);
                 var htmlNode = $("<div/>", {
-                    "class": "node " + node.Position + " unavailable",
+                    "class": "node "+"x"+x+" y"+y+" unavailable",
                     "id": id,
                     "html": [
                         $("<div/>", {
@@ -353,7 +308,7 @@ skillTree = {
                     ]
                 });
                 nodeBag = nodeBag.add(htmlNode);
-                skillTree.nodes[skill.Name].push({"id":id, "x":x, "y":y});
+                skillTree.nodes[skill.Name].push({"id":id, "x":x, "y":y, "children":node.Children});
             }
             else
                 console.log("Error. No position given.")
@@ -413,17 +368,7 @@ function createSimulator(className, skillData)
 
     });
 }
-function disableChildren(node)
-{
-    var current = skillTree.getId("self", node),
-        children = skillTree.getId("children", node);
 
-    $("#"+current.id).changeClass("disabled");
-    console.log(children);
-    $.each(children, function(){
-        $("#"+this.id).changeClass("disabled")
-    });
-}
 function generateSkillListEntry(skillObj)
 {
     var skillEntry = $("<li/>", {
@@ -458,14 +403,13 @@ function generateSkillListEntry(skillObj)
 
         */
 
-        //$(".skill-description .inner").html("");
+
         if(skillObj.Name)
         {
             var descInfo = $("<span/>", {
                 "class":"name",
                 "html":skillObj.Name
             });
-            //Append
         }
         if(skillObj.Resource)
         {
@@ -494,8 +438,7 @@ function generateSkillListEntry(skillObj)
 
             //Build new Events for Nodes after Pulling it from storage
             $(".node").click(function(){
-                //$(this).clickNode();
-                //$(this).toggleClass("active");
+                $(this).clickNode();
                 skillTree.push()
             });
         }
@@ -506,26 +449,3 @@ function generateSkillListEntry(skillObj)
     });
     return skillEntry;
 }
-
-
-function getFirstNode()
-{
-    var nodes = $(".node"),
-        toReturn;
-    nodes.each(function(){
-        for(var y = 1; y < 6; y++){
-            for(var x = 1; x < 4; x++){
-                var xClass = "x"+ x,
-                    yClass = "y"+ y,
-                    xyClass= xClass + " " + yClass;
-                if($(this).hasClass(xyClass))
-                {
-                    toReturn = $(this);
-                    return false;
-                }
-            }
-        }
-    });
-    return toReturn;
-}
-
