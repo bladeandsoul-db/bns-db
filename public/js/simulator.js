@@ -284,6 +284,7 @@ skillTree = {
 
     },
     generate: function(skill){
+        console.log(skill);
         var nodeBag = $();
         skillTree.nodes[skill.Name] = [];
         skill.Nodes.forEach(function(node, nodeIndex, nodeAr) {
