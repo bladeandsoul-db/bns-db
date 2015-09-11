@@ -285,23 +285,22 @@ skillTree = {
     },
     generate: function(skill){
         var nodeBag = $();
-        skillTree.nodes[skill.name] = [];
-        skill.nodes.forEach(function(node, nodeIndex, nodeAr) {
-            if (node.position)
+        skillTree.nodes[skill.Name] = [];
+        skill.Nodes.forEach(function(node, nodeIndex, nodeAr) {
+            if (node.Position)
             {
-                if (!node.icon)
-                    node.icon = skill.icon;
-                var x = node.position.x,
-                    y = node.position.y,
+                if (!node.Icon)
+                    node.Icon = skill.Icon;
+                var x = node.Position.x,
+                    y = node.Position.y,
                     id = hashids.encode([x,y]);
-
                 var htmlNode = $("<div/>", {
                     "class": "node "+"x"+x+" y"+y+" unavailable",
                     "id": id,
                     "html": [
                         $("<div/>", {
                             "class": "icon",
-                            "html": $("<img/>", {"src": node.icon})
+                            "html": $("<img/>", {"src": node.Icon})
                         }),
                         $("<div/>", {
                             "class": "frame"
@@ -309,14 +308,14 @@ skillTree = {
                     ]
                 });
                 nodeBag = nodeBag.add(htmlNode);
-                skillTree.nodes[skill.name].push({"id":id, "x":x, "y":y, "children":node.children});
+                skillTree.nodes[skill.Name].push({"id":id, "x":x, "y":y, "children":node.Children});
             }
             else
                 console.log("Error. No position given.")
         });
-        $(nodeBag).getFirstNode().changeClass("available");
 
-        skillTree.storage[skill.name] = nodeBag;
+        $(nodeBag).getFirstNode().changeClass("available");
+        skillTree.storage[skill.Name] = nodeBag;
     }
 };
 function createSimulator(className, skillData)
@@ -358,7 +357,7 @@ function createSimulator(className, skillData)
 
                 // Create Nodes
                 //-------------------------------------------
-                if(skill.nodes){
+                if(skill.Nodes){
                     skillTree.generate(skill);
                 }
 
@@ -374,15 +373,15 @@ function generateSkillListEntry(skillObj)
 {
     var skillEntry = $("<li/>", {
         "class": "skill",
-        "title": skillObj.name,
+        "title": skillObj.Name,
         "html": [
             $("<div/>",{
                 "class":"thumb",
-                "html": $("<img/>", {"src":skillObj.icon})
+                "html": $("<img/>", {"src":skillObj.Icon})
             }),
             $("<div/>",{
                 "class":"name",
-                "html":skillObj.name
+                "html":skillObj.Name
             })
         ]
     });
@@ -405,14 +404,14 @@ function generateSkillListEntry(skillObj)
         */
 
 
-        if(skillObj.name)
+        if(skillObj.Name)
         {
             var descInfo = $("<span/>", {
                 "class":"name",
-                "html":skillObj.name
+                "html":skillObj.Name
             });
         }
-        if(skillObj.resource)
+        if(skillObj.Resource)
         {
             var descResource = $("<p/>",{
                 "class":"resource",
@@ -432,10 +431,10 @@ function generateSkillListEntry(skillObj)
 
         $(".skill-grid").html("");
 
-        if(skillObj.hasOwnProperty("nodes") && skillObj.nodes.length){
+        if(skillObj.hasOwnProperty("Nodes") && skillObj.Nodes.length){
 
             $(".noTree").hide();
-            skillTree.pull(skillObj.name);
+            skillTree.pull(skillObj.Name);
 
             //Build new Events for Nodes after Pulling it from storage
             $(".node").click(function(){
@@ -444,7 +443,7 @@ function generateSkillListEntry(skillObj)
             });
         }
         else{
-            $(".noTree").html("<b style='color:#ff3300;'>"+skillObj.name+"</b> does not have a skill tree");
+            $(".noTree").html("<b style='color:#ff3300;'>"+skillObj.Name+"</b> does not have a skill tree");
             $(".noTree").show();
         }
     });
