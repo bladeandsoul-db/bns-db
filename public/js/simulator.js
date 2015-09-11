@@ -285,22 +285,23 @@ skillTree = {
     },
     generate: function(skill){
         var nodeBag = $();
-        skillTree.nodes[skill.Name] = [];
-        skill.Nodes.forEach(function(node, nodeIndex, nodeAr) {
-            if (node.Position)
+        skillTree.nodes[skill.name] = [];
+        skill.nodes.forEach(function(node, nodeIndex, nodeAr) {
+            if (node.position)
             {
-                if (!node.Icon)
-                    node.Icon = skill.Icon;
+                if (!node.icon)
+                    node.icon = skill.icon;
                 var x = node.position.x,
                     y = node.position.y,
                     id = hashids.encode([x,y]);
+
                 var htmlNode = $("<div/>", {
                     "class": "node "+"x"+x+" y"+y+" unavailable",
                     "id": id,
                     "html": [
                         $("<div/>", {
                             "class": "icon",
-                            "html": $("<img/>", {"src": node.Icon})
+                            "html": $("<img/>", {"src": node.icon})
                         }),
                         $("<div/>", {
                             "class": "frame"
@@ -308,13 +309,14 @@ skillTree = {
                     ]
                 });
                 nodeBag = nodeBag.add(htmlNode);
-                skillTree.nodes[skill.Name].push({"id":id, "x":x, "y":y, "children":node.Children});
+                skillTree.nodes[skill.name].push({"id":id, "x":x, "y":y, "children":node.children});
             }
             else
                 console.log("Error. No position given.")
         });
         $(nodeBag).getFirstNode().changeClass("available");
-        skillTree.storage[skill.Name] = nodeBag;
+
+        skillTree.storage[skill.name] = nodeBag;
     }
 };
 function createSimulator(className, skillData)
@@ -356,7 +358,7 @@ function createSimulator(className, skillData)
 
                 // Create Nodes
                 //-------------------------------------------
-                if(skill.Nodes){
+                if(skill.nodes){
                     skillTree.generate(skill);
                 }
 
@@ -372,15 +374,15 @@ function generateSkillListEntry(skillObj)
 {
     var skillEntry = $("<li/>", {
         "class": "skill",
-        "title": skillObj.Name,
+        "title": skillObj.name,
         "html": [
             $("<div/>",{
                 "class":"thumb",
-                "html": $("<img/>", {"src":skillObj.Icon})
+                "html": $("<img/>", {"src":skillObj.icon})
             }),
             $("<div/>",{
                 "class":"name",
-                "html":skillObj.Name
+                "html":skillObj.name
             })
         ]
     });
@@ -403,14 +405,14 @@ function generateSkillListEntry(skillObj)
         */
 
 
-        if(skillObj.Name)
+        if(skillObj.name)
         {
             var descInfo = $("<span/>", {
                 "class":"name",
-                "html":skillObj.Name
+                "html":skillObj.name
             });
         }
-        if(skillObj.Resource)
+        if(skillObj.resource)
         {
             var descResource = $("<p/>",{
                 "class":"resource",
@@ -430,10 +432,10 @@ function generateSkillListEntry(skillObj)
 
         $(".skill-grid").html("");
 
-        if(skillObj.hasOwnProperty("Nodes") && skillObj.Nodes.length){
+        if(skillObj.hasOwnProperty("nodes") && skillObj.nodes.length){
 
             $(".noTree").hide();
-            skillTree.pull(skillObj.Name);
+            skillTree.pull(skillObj.name);
 
             //Build new Events for Nodes after Pulling it from storage
             $(".node").click(function(){
@@ -442,7 +444,7 @@ function generateSkillListEntry(skillObj)
             });
         }
         else{
-            $(".noTree").html("<b style='color:#ff3300;'>"+skillObj.Name+"</b> does not have a skill tree");
+            $(".noTree").html("<b style='color:#ff3300;'>"+skillObj.name+"</b> does not have a skill tree");
             $(".noTree").show();
         }
     });
