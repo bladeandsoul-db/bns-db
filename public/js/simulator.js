@@ -1,5 +1,5 @@
 var hashids = new Hashids("this is my salt", 4, "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890");
-$.getJSON("json/Assassin.json", function(json) {
+$.getJSON("json/assassin.json", function(json) {
     createSimulator("Assassin",json);
     //activate first entry
     $(".skill-list .list .skill")[0].click();
